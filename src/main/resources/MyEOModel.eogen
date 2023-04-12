@@ -1,8 +1,11 @@
  -destination src/test/resources \
  -extension java \
  -java \
+ -javaTemplate _WonderEntity.java \
  -model src/main/resources/MyEOModel.eomodeld \
  -packagedirs \
  -subclassDestination src/test/resources \
+ -subclassJavaTemplate WonderEntity.java \
+ -templatedir ../../FHFramework_MV/src/main/webserver-resources/VelocityEOGeneratorTemplates \
  -verbose \
  -loadModelGroup

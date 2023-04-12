@@ -1,24 +1,29 @@
-// $LastChangedRevision$ DO NOT EDIT.  Make changes to MeinUser.java instead.
+// DO NOT EDIT.  Make changes to MeinUser.java instead.
 package js_fb5.w_hs.model;
 
 import com.webobjects.eoaccess.*;
 import com.webobjects.eocontrol.*;
 import com.webobjects.foundation.*;
-
-import er.extensions.eof.ERXGenericRecord;
-
 import java.math.*;
 import java.util.*;
 import org.apache.log4j.Logger;
 
+import er.extensions.eof.*;
+import er.extensions.foundation.*;
+
 @SuppressWarnings("all")
 public abstract class _MeinUser extends  ERXGenericRecord {
-	public static final String ENTITY_NAME = "MeinUser";
+  public static final String ENTITY_NAME = "MeinUser";
 
-	// Attributes
-	public static final String VOR_NAME_KEY = "vorName";
+  // Attribute Keys
+  public static final ERXKey<java.time.LocalDate> MY_TIME_IN_JAVA = new ERXKey<java.time.LocalDate>("myTimeInJava");
+  public static final ERXKey<String> VOR_NAME = new ERXKey<String>("vorName");
+  // Relationship Keys
 
-	// Relationships
+  // Attributes
+  public static final String MY_TIME_IN_JAVA_KEY = MY_TIME_IN_JAVA.key();
+  public static final String VOR_NAME_KEY = VOR_NAME.key();
+  // Relationships
 
   private static Logger LOG = Logger.getLogger(_MeinUser.class);
 
@@ -30,23 +35,36 @@ public abstract class _MeinUser extends  ERXGenericRecord {
     return localInstance;
   }
 
+  public java.time.LocalDate myTimeInJava() {
+    return (java.time.LocalDate) storedValueForKey(_MeinUser.MY_TIME_IN_JAVA_KEY);
+  }
+
+  public void setMyTimeInJava(java.time.LocalDate value) {
+    if (_MeinUser.LOG.isDebugEnabled()) {
+    	_MeinUser.LOG.debug( "updating myTimeInJava from " + myTimeInJava() + " to " + value);
+    }
+    takeStoredValueForKey(value, _MeinUser.MY_TIME_IN_JAVA_KEY);
+  }
+
   public String vorName() {
-    return (String) storedValueForKey("vorName");
+    return (String) storedValueForKey(_MeinUser.VOR_NAME_KEY);
   }
 
   public void setVorName(String value) {
     if (_MeinUser.LOG.isDebugEnabled()) {
     	_MeinUser.LOG.debug( "updating vorName from " + vorName() + " to " + value);
     }
-    takeStoredValueForKey(value, "vorName");
+    takeStoredValueForKey(value, _MeinUser.VOR_NAME_KEY);
   }
 
 
-  public static MeinUser createMeinUser(EOEditingContext editingContext, String vorName
-) {
+  public static MeinUser createMeinUser(EOEditingContext editingContext) {
     MeinUser eo = (MeinUser) EOUtilities.createAndInsertInstance(editingContext, _MeinUser.ENTITY_NAME);    
-		eo.setVorName(vorName);
     return eo;
+  }
+
+  public static ERXFetchSpecification<MeinUser> fetchSpec() {
+    return new ERXFetchSpecification<MeinUser>(_MeinUser.ENTITY_NAME, null, null, false, true, null);
   }
 
   public static NSArray<MeinUser> fetchAllMeinUsers(EOEditingContext editingContext) {
@@ -58,9 +76,9 @@ public abstract class _MeinUser extends  ERXGenericRecord {
   }
 
   public static NSArray<MeinUser> fetchMeinUsers(EOEditingContext editingContext, EOQualifier qualifier, NSArray<EOSortOrdering> sortOrderings) {
-    EOFetchSpecification fetchSpec = new EOFetchSpecification(_MeinUser.ENTITY_NAME, qualifier, sortOrderings);
+    ERXFetchSpecification<MeinUser> fetchSpec = new ERXFetchSpecification<MeinUser>(_MeinUser.ENTITY_NAME, qualifier, sortOrderings);
     fetchSpec.setIsDeep(true);
-    NSArray<MeinUser> eoObjects = (NSArray<MeinUser>)editingContext.objectsWithFetchSpecification(fetchSpec);
+    NSArray<MeinUser> eoObjects = fetchSpec.fetchObjects(editingContext);
     return eoObjects;
   }
 
@@ -76,7 +94,7 @@ public abstract class _MeinUser extends  ERXGenericRecord {
       eoObject = null;
     }
     else if (count == 1) {
-      eoObject = (MeinUser)eoObjects.objectAtIndex(0);
+      eoObject = eoObjects.objectAtIndex(0);
     }
     else {
       throw new IllegalStateException("There was more than one MeinUser that matched the qualifier '" + qualifier + "'.");
@@ -97,7 +115,7 @@ public abstract class _MeinUser extends  ERXGenericRecord {
   }
 
   public static MeinUser localInstanceIn(EOEditingContext editingContext, MeinUser eo) {
-    MeinUser localInstance = (eo == null) ? null : (MeinUser)EOUtilities.localInstanceOfObject(editingContext, eo);
+    MeinUser localInstance = (eo == null) ? null : ERXEOControlUtilities.localInstanceOfObject(editingContext, eo);
     if (localInstance == null && eo != null) {
       throw new IllegalStateException("You attempted to localInstance " + eo + ", which has not yet committed.");
     }
