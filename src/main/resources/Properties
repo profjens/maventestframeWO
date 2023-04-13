@@ -1,0 +1,70 @@
+
+# Erratchment von hier: http://lists.apple.com/archives/webobjects-dev/2012/Sep/msg00118.html
+#com.webobjects.eoaccess.ERXEntityDependencyOrderingDelegate.active=true
+ERAttachment.removeJdbc2Info=true
+ERAttachment.URL=jdbc:postgresql://localhost/praxisnetz
+ERAttachment.DBUser= postgres
+ERAttachment.DBPassword= joanna
+
+# Misc Components
+er.extensions.ERXWOForm.multipleSubmitDefault=true
+er.extensions.ERXWORepetition.checkHashCodes=false
+er.extensions.ERXWORepetition.raiseOnUnmatchedObject=false
+er.extensions.ERXWORepetition.eoSupport=true
+
+#personal
+er.attachment.personal.photos
+er.attachment.tempFolder=/tmp
+er.attachment.personal.photos.tempFolder=/tmp
+er.attachment.personal.photos.maxSize=2097152
+er.attachment.personal.photos.storageType=file
+er.attachment.personal.photos.file.overwrite=true
+er.attachment.personal.photos.file.filesystemPath=/var/www/html/WebObjects/photos
+#computer
+er.attachment.computer.photos
+er.attachment.tempFolder=/tmp
+er.attachment.computer.photos.tempFolder=/tmp
+er.attachment.computer.photos.maxSize=2097152
+er.attachment.computer.photos.storageType=file
+er.attachment.computer.photos.file.overwrite=true
+er.attachment.computer.photos.file.filesystemPath=/var/www/html/WebObjects/photos
+
+er.attachment.db.webPath=/${pk}/${fileName}
+dbConnectUserGLOBAL=postgres
+dbConnectPasswordGLOBAL=joanna
+dbConnectPluginGLOBAL=PostgresqlPlugIn
+dbConnectDriverGLOBAL=org.postgresql.Driver
+
+erprototypes.EOPrototypesEntity=EOJDBCpostgresqlPrototypes
+
+# OGNL
+#ognl.helperFunctions=true
+#ognl.inlineBindings=true
+
+# Misc
+#er.extensions.stackTrace.cleanup=true
+
+# EOF
+er.extensions.ERXEC.safeLocking=true
+er.extensions.ERXEC.useSharedEditingContext=false
+er.extensions.ERXEnterpriseObject.applyRestrictingQualifierOnInsert=true
+er.extensions.ERXEnterpriseObject.updateInverseRelationships=true
+er.extensions.ERXRaiseOnMissingEditingContextDelegate=false
+ERAttachment.removeJdbc2Info=true
+
+# Migrations
+er.migration.migrateAtStartup=true
+er.migration.createTablesIfNecessary=true
+er.migration.modelNames=PraxisNetzwerkEOModel
+#er.migration.modelNames=YourModel
+# Erratchment von hier: http://lists.apple.com/archives/webobjects-dev/2012/Sep/msg00118.html
+#com.webobjects.eoaccess.ERXEntityDependencyOrderingDelegate.active=true
+
+# Misc Components
+#er.extensions.ERXWOForm.multipleSubmitDefault=true
+#er.extensions.ERXWORepetition.checkHashCodes=false
+#er.extensions.ERXWORepetition.raiseOnUnmatchedObject=false
+#er.extensions.ERXWORepetition.eoSupport=true
+#er.component.clickToOpen=true
+#er.extensions.ERXStyleSheet.xhtml=false
+#wolips.password=wo
